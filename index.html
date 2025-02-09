@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Content Q&A Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Content Q&A Tool</h1>
+    <form id="urlForm">
+        <label for="urls">Enter URLs (comma-separated):</label>
+        <input type="text" id="urls" placeholder="https://example.com, https://another-example.com" required>
+        <button type="submit">Scrape Content</button>
+    </form>
+
+    <form id="qaForm">
+        <label for="question">Ask a Question:</label>
+        <textarea id="question" placeholder="What is the main topic of the page?" required></textarea>
+        <button type="submit">Get Answer</button>
+    </form>
+
+    <div class="output" id="output"></div>
+
+    <script>
+        document.getElementById('urlForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const urls = document.getElementById('urls').value.split(',').map(url => url.trim());
+            const response = await fetch('/scrape', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ urls })
+            });
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        document.getElementById('qaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+            const response = await fetch('/answer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question })
+            });
+            const result = await response.json();
+            const outputDiv = document.getElementById('output');
+            if (result.status === 'success') {
+                outputDiv.textContent = `Answer: ${result.answer}`;
+            } else {
+                outputDiv.textContent = `Error: ${result.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
