@@ -1,7 +1,0 @@
-flask 
-requests 
-beautifulsoup4 
-selenium
-sentence-transformers
-transformers
-torch
