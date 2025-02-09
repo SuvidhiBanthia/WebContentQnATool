@@ -45,19 +45,23 @@ The tool leverages **ChromaDB** for efficient similarity search and the **Groq A
    git clone https://github.com/your-username/web-content-qa-tool.git
    cd web-content-qa-tool
 
-2. Create a virtual environment (optional but recommended):
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+2. Create a virtual environment (optional):
+  ```bash
+  python -m venv venv
+  source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 3. Install dependencies:
-pip install -r requirements.txt
+  ```bash
+  pip install -r requirements.txt
 
-4. Set up the Groq API key:
-Obtain an API key from Groq and Add the API key to your environment variables:
-```bash
-export GROQ_API_KEY="your-groq-api-key"
+4. Set up the Groq API key: Obtain an API key from Groq and Add the API key to your environment variables:
+  ```bash
+  export GROQ_API_KEY="your-groq-api-key"
 
 5. Run the Flask app:
-```bash
-python app.py
-Open your browser and navigate to http://127.0.0.1:5000.
+  ```bash
+  python app.py
+
+6. Open your browser and navigate to http://127.0.0.1:5000.
+
+7. Enter the URL and press "Scrape content." A pop up will appear to confirm that content has been scraped. Next, enter the question you want to ask and press "Get answer." Wait for a few seconds for the process to complete.
