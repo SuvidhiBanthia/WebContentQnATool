@@ -53,12 +53,12 @@ The tool leverages **ChromaDB** for efficient similarity search and the **Groq A
    pip install -r requirements.txt
 
 4. Set up the Groq API key: Obtain an API key from Groq and Add the API key to your environment variables:
-  ```bash
-  export GROQ_API_KEY="your-groq-api-key"
+   ```bash
+   export GROQ_API_KEY="your-groq-api-key"
 
 5. Run the Flask app:
-  ```bash
-  python app.py
+   ```bash
+   python app.py
 
 6. Open your browser and navigate to http://127.0.0.1:5000.
 
