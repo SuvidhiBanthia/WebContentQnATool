@@ -47,7 +47,7 @@ The tool leverages **ChromaDB** for efficient similarity search and the **Groq A
 2. Create a virtual environment (optional):
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows: .\myenv\Scripts\activate
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
