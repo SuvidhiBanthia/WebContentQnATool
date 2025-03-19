@@ -92,7 +92,7 @@ def generate_answer(chunks, query):
     """
     Generates an answer using the Groq API and Llama3.
     """
-    os.environ["GROQ_API_KEY"] = "you-api-key"
+    os.environ["GROQ_API_KEY"] = "your-api-key"
     client = groq.Client(api_key=os.getenv("GROQ_API_KEY"))
     system_prompt = """You are a helpful AI assistant who specializes in extracting data from websites. Please use the following context to answer the question at the end and please answer it completely.
     If you don't know the answer, just say you don't know, don't try to make up an answer. Use Chain of Thought Strategy for answering. Do not hallucinate.
