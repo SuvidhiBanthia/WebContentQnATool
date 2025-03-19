@@ -49,7 +49,12 @@ def embed_and_index_text(chunks):
     model = AutoModel.from_pretrained("BAAI/bge-small-en-v1.5")
     #db = chromadb.Client()
     db = chromadb.EphemeralClient()  # Use an in-memory database
-    collection = db.create_collection("website_data")
+    try:
+        collection = db.get_collection("website_data")
+    except Exception as e:
+        # If the collection doesn't exist, create it
+        collection = db.create_collection("website_data")
+        
     for i, chunk in enumerate(chunks):
         # Tokenize the chunk and truncate if necessary
         input_data = tokenizer(
